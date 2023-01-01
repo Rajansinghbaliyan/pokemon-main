@@ -5,7 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.BasicTypeReference;
+import org.hibernate.type.SqlTypes;
+import org.hibernate.type.StandardBasicTypes;
 
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -18,7 +22,7 @@ public class Base {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
-    @Convert(converter = org.hibernate.type.StandardBasicTypes.class)
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
     private UUID uuid;
 
     @Version
