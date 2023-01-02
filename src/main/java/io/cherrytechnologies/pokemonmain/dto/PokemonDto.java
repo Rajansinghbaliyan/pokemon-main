@@ -1,11 +1,13 @@
 package io.cherrytechnologies.pokemonmain.dto;
 
 import io.cherrytechnologies.pokemonmain.domain.Pokemon;
+import io.cherrytechnologies.pokemonmain.web.responsedto.AbilityDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @ToString
@@ -18,6 +20,7 @@ public class PokemonDto implements Comparable<PokemonDto>, Serializable {
     private boolean is_default;
     private String location_area_encounters;
     private int weight;
+    private List<AbilityDto> abilities;
 
     @Override
     public int compareTo(PokemonDto o) {
