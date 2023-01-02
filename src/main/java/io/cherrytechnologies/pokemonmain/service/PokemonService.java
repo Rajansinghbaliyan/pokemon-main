@@ -32,9 +32,23 @@ public class PokemonService {
 
     public PokemonDto getById(int id) {
         log.debug(String.format("Get pokemon by id: %d", id));
-        return repository.getPokemonsById(id)
-                .orElseThrow(() -> new PokemonNotAvailable("Pokemon is not available id: " + id))
-                .pokemonToDto();
+        Pokemon pokemon = repository.getPokemonsById(id)
+                .orElseThrow(() -> new PokemonNotAvailable("Pokemon is not available id: " + id));
+
+        @SuppressWarnings("unchecked")
+        Class<List<AbilityDto>> listClass = (Class) List.class;
+
+        Optional<List<AbilityDto>> abilityDtos = webCall
+                .getById(listClass, pokemon.getUuid(), constants.getABILITY_BY_POKEMON_ID())
+                .blockOptional();
+
+        PokemonDto pokemonDto = pokemon.pokemonToDto();
+
+        abilityDtos.ifPresent(
+                pokemonDto::setAbilities
+        );
+
+        return pokemonDto;
     }
 
     public List<PokemonDto> getAll() {

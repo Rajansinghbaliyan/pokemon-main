@@ -19,6 +19,7 @@ public class WebCall {
     }
 
     public <T> Mono<T> getById(Class<T> tClass, UUID uuid, String url) {
+        log.debug("Getting ability for pokemon id: "+ uuid);
         return client
                 .get()
                 .uri(url + "/{uuid}", uuid)
@@ -31,6 +32,7 @@ public class WebCall {
     }
 
     public <T> Mono<T> saveEntity(T entity, String url, Class<T> tClass) {
+        log.debug("Saving abilities for pokemons");
         return client
                 .post()
                 .uri(url)

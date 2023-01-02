@@ -11,4 +11,6 @@ public class UrlConstants {
     private String ABILITY_URL;
     @Value("${ability.url.save.all}")
     private String ABILITY_URL_SAVE_ALL;
+    @Value("${ability.url.by.pokemonId}")
+    private String ABILITY_BY_POKEMON_ID;
 }

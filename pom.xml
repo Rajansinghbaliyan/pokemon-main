@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.cherrytechnologies</groupId>
     <artifactId>pokemon-main</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <name>pokemon-main</name>
     <description>pokemon-main</description>
     <properties>
